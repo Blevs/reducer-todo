@@ -9,11 +9,16 @@ function App() {
   const toggle = id => dispatch({ type: "TOGGLE_TODO", payload: id });
   const addTodo = item => dispatch({ type: "ADD_TODO", payload: item });
   const clearCompleted = () => dispatch({ type: "CLEAR_COMPLETED" });
+  const handleItem = event => dispatch({ type: "INPUT_ITEM", payload: event.target.value });
+
   return (
     <div className="todo">
       <h2>Todos</h2>
       <div className="todo-body">
-        <TodoForm addTodo={addTodo} clearCompleted={clearCompleted} />
+        <TodoForm addTodo={addTodo}
+                  clearCompleted={clearCompleted}
+                  handleItem={handleItem}
+                  item={state.item} />
         <TodoList todos={state.todos} toggle={toggle} />
       </div>
     </div>

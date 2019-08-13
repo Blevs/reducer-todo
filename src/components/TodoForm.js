@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const TodoForm = ({addTodo, clearCompleted}) => {
-  const [item, setItem] = useState("");
+const TodoForm = ({addTodo, clearCompleted, item, handleItem}) => {
   const handleSubmit = event => {
     event.preventDefault();
     addTodo(item);
-    setItem("");
   };
   const handleClear = event => {
     event.preventDefault();
@@ -16,7 +14,7 @@ const TodoForm = ({addTodo, clearCompleted}) => {
       <input type="text"
              name="item"
              placeholder="new todo"
-             onChange={e => setItem(e.target.value)}
+             onChange={handleItem}
              value={item} />
       <div className="todo-form-buttons">
         <button className="todo-add" type="submit">Add</button>
